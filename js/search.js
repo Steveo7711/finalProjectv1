@@ -13,7 +13,7 @@ function getUrlParameter(sParam) {
       sParameterName = sURLVariables[i].split('=');
 
       if (sParameterName[0] === sParam) {
-          return sParameterName[1] === undefined ? true : sParameterName[1];
+          return sParameterName[1] === undefined ? true : sParameterName[1].replace(/\+/g, " ");  // decode + as space
       }
   }
 }
@@ -79,13 +79,13 @@ function createDidYouMeanDiv(searchStrg) {
 
 // EVENT LISTENER, ON DOCUMENT LOADED
 $(function() {
-  var searchStrg = getUrlParameter("searchStrg");
+  var searchStrg = getUrlParameter("searchStrg").trim();  // remove whitespaces
   console.log("respond to search string: " + searchStrg);
 
   $("#searchString").val(searchStrg);
 
   // handle empty search, show not found message
-  if (searchStrg.trim() === "") {
+  if (searchStrg === "") {
     $("#searchResults").append(createNotFoundDiv());
   } else {
     searchThroughCheatsheets(searchStrg);
