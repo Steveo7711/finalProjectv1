@@ -21,7 +21,7 @@ Messages[0] = "/cheatsheets/CPlusPlus.jpg";
 var WindowsCS = new Array();
 Messages[0] = "/cheatsheets/windowIntro.jpg";
 
-Search (var search) {
+function Search (search) {
 //assign the search varible
 var x = search;
 //make varible for results function
